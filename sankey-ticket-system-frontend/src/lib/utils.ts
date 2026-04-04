@@ -39,10 +39,25 @@ export const statusConfig: Record<TicketStatus, { label: string; color: string; 
 //   const days = Math.floor(hrs / 24);
 //   return `${days}d ago`;
 // }
+// export function formatDate(dateStr: string): string {
+//   if (!dateStr) return '—';
+//   return new Date(dateStr).toLocaleDateString('en-IN', {
+//     day: 'numeric', month: 'short', year: 'numeric',
+//   });
+// }
+
+// export function formatDateTime(dateStr: string): string {
+//   if (!dateStr) return '—';
+//   return new Date(dateStr).toLocaleString('en-IN', {
+//     day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit',
+//     hour12: true,
+//   });
+// }
 export function formatDate(dateStr: string): string {
   if (!dateStr) return '—';
   return new Date(dateStr).toLocaleDateString('en-IN', {
     day: 'numeric', month: 'short', year: 'numeric',
+    timeZone: 'Asia/Kolkata',
   });
 }
 
@@ -51,9 +66,9 @@ export function formatDateTime(dateStr: string): string {
   return new Date(dateStr).toLocaleString('en-IN', {
     day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit',
     hour12: true,
+    timeZone: 'Asia/Kolkata',
   });
 }
-
 export function timeAgo(dateStr: string): string {
   const diff = Date.now() - new Date(dateStr).getTime();
   const mins = Math.floor(diff / 60000);
